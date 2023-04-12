@@ -30,5 +30,8 @@ export const MESSAGES = {
     UPDATE: {
       SUCCESS: 'SUCCESSFULLY UPDATED ADDRESS',
     },
+    DELETE: {
+      SUCCESS: 'DELETED ADDRESS',
+    },
   },
 };

@@ -1,7 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  Param,
+  ParseIntPipe,
   Patch,
   Post,
   Request,
@@ -62,6 +65,18 @@ export class UserAddressController {
     try {
       const { userLoginInfoId }: UserLoginInfoEntity = request.user;
       return await this.userAddressUsecase.update(userAddressUpdateReqDto);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  @Delete('delete/:id')
+  @ApiBearerAuth()
+  async delete(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<IResponse<UserAddressResDto>> {
+    try {
+      return await this.userAddressUsecase.delete(id);
     } catch (error) {
       throw error;
     }

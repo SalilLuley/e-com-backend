@@ -32,4 +32,7 @@ export class MongoGenericRepository<T> implements IGenericRepository<T> {
   getAllByProperties<U>(properties: U): Promise<T[]> {
     throw new Error('Method not implemented.');
   }
+  delete(id: any) {
+    throw new Error('Method not implemented.');
+  }
 }

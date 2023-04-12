@@ -37,4 +37,7 @@ export class SQLGenericRepository<T> implements IGenericRepository<T> {
       where: { ...properties },
     });
   }
+  delete(id: any) {
+    return this._repository.delete(id);
+  }
 }

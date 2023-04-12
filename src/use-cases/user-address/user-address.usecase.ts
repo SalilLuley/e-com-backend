@@ -78,4 +78,16 @@ export class UserAddressUsecase {
       throw error;
     }
   }
+
+  async delete(id: number): Promise<IResponse<UserAddressResDto>> {
+    try {
+      await this.databaseService.userAddress.delete(id);
+      return {
+        data: null,
+        message: MESSAGES.USER_ADDRESS.DELETE.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
 }
