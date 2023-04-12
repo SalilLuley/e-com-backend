@@ -67,8 +67,8 @@ export class UserAddressUsecase {
         this.userConvertor.toUpdateUserAddressModelFromDto(
           userAddressUpdateReqDto,
         );
-      const entity: UserAddressEntity =
-        await this.databaseService.userAddress.update(id, userAddressEntity);
+
+      await this.databaseService.userAddress.update(id, userAddressEntity);
 
       return {
         data: null,
