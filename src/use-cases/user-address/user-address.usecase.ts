@@ -29,7 +29,28 @@ export class UserAddressUsecase {
 
       return {
         data,
-        message: MESSAGES.USER_ADDRESS.SUCCESS,
+        message: MESSAGES.USER_ADDRESS.CREATE.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getUserAddress(
+    userId: number,
+  ): Promise<IResponse<UserAddressResDto[]>> {
+    try {
+      const entities: UserAddressEntity[] =
+        await this.databaseService.userAddress.getAllByProperties({
+          userLoginInfoId: userId,
+        });
+
+      const data: UserAddressResDto[] =
+        this.userConvertor.toUserAddressResDtoFromEntities(entities);
+
+      return {
+        data,
+        message: MESSAGES.USER_ADDRESS.GET.SUCCESS,
       };
     } catch (error) {
       throw error;

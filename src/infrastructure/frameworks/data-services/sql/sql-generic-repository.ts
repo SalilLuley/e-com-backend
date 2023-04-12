@@ -30,4 +30,11 @@ export class SQLGenericRepository<T> implements IGenericRepository<T> {
   update(id: number, item: any) {
     return this._repository.update(id, item);
   }
+
+  getAllByProperties(properties: any): Promise<T[]> {
+    return this._repository.find({
+      select: this._populateOnFind,
+      where: { ...properties },
+    });
+  }
 }

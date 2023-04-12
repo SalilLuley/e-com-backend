@@ -8,6 +8,13 @@ export class UserAddressConvertor {
   toUserAddressResDtoFromEntity(data: UserAddressEntity): UserAddressResDto {
     return { ...data };
   }
+
+  toUserAddressResDtoFromEntities(
+    data: UserAddressEntity[],
+  ): UserAddressResDto[] {
+    return data.map((item) => ({ ...item }));
+  }
+
   toUserAddressModelFromDto(
     userId: number,
     userAddressReqDto: UserAddressReqDto,

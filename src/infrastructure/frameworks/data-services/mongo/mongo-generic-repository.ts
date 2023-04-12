@@ -28,4 +28,8 @@ export class MongoGenericRepository<T> implements IGenericRepository<T> {
   update(id: string, item: T) {
     return this._repository.findByIdAndUpdate(id, item);
   }
+
+  getAllByProperties<U>(properties: U): Promise<T[]> {
+    throw new Error('Method not implemented.');
+  }
 }
