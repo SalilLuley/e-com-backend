@@ -17,17 +17,21 @@ import { IResponse } from 'src/domain/common/response.interface';
 import { UserAddressReqDto } from 'src/domain/dto/user-address/user-address-req.dto';
 import { UserAddressResDto } from 'src/domain/dto/user-address/user-address-res.dto';
 import { UserAddressUpdateReqDto } from 'src/domain/dto/user-address/user-address-update-req.dto';
+import { Roles } from 'src/infrastructure/common/decorators/roles.decorator';
+import { ROLES } from 'src/infrastructure/common/enum/roles.enum';
 import { AccessTokenGuard } from 'src/infrastructure/guards/auth/accessToken.guard';
+import { RolesGuard } from 'src/infrastructure/guards/roles.guard';
 import { UserAddressUsecase } from 'src/use-cases/user-address/user-address.usecase';
 
 @Controller('userAddress')
-@ApiTags('UserController')
-@UseGuards(AccessTokenGuard)
+@ApiTags('User-Address')
+@UseGuards(AccessTokenGuard, RolesGuard)
 export class UserAddressController {
   constructor(private userAddressUsecase: UserAddressUsecase) {}
 
   @Get('get')
   @ApiBearerAuth()
+  @Roles(ROLES.USER)
   async getAddressByUserId(
     @Request() request: RequestWithUser,
   ): Promise<IResponse<UserAddressResDto[]>> {
@@ -41,6 +45,7 @@ export class UserAddressController {
 
   @Post('create')
   @ApiBearerAuth()
+  @Roles(ROLES.USER)
   async create(
     @Request() request: RequestWithUser,
     @Body() userAddressReqDto: UserAddressReqDto,

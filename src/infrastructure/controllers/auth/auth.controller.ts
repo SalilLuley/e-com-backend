@@ -23,7 +23,7 @@ import { MESSAGES } from 'src/infrastructure/common';
 import { RequestWithUser } from 'src/domain/common/request.interface';
 
 @Controller('auth')
-@ApiTags('auth')
+@ApiTags('Auth')
 export class AuthController {
   constructor(
     private loginUsecase: LoginUsecase,

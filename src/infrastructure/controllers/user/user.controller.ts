@@ -18,7 +18,7 @@ import { RefreshTokenUpdateInterceptor } from 'src/infrastructure/interceptors/r
 import { UserUsecase } from 'src/use-cases/user/user.usecase';
 
 @Controller('users')
-@ApiTags('user')
+@ApiTags('User')
 @UseGuards(AccessTokenGuard, RolesGuard)
 export class UserController {
   constructor(private userUsecase: UserUsecase) {}

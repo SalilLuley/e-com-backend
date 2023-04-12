@@ -25,7 +25,7 @@ async function bootstrap() {
     .setTitle('E-Com MS')
     .setDescription('This is e-commerce ms API description')
     .setVersion('1.0')
-    .addTag('e-com')
+    .addTag('E-Com MS')
     .setExternalDoc('Postman Collection', '../api-json')
     .build();
   const document = SwaggerModule.createDocument(app, config);
