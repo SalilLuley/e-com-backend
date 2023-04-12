@@ -8,20 +8,26 @@ import { ProfileUserEntity } from 'src/domain/entities/profile-user/profile-user
 import { ProfileEntity } from 'src/domain/entities/profile/profile.entity';
 import { ProfileModel } from './model/profile.model';
 import { ProfileUserModel } from './model/profile-user.model';
+import { UserAddressEntity } from 'src/domain/entities/user-address/user-address.entity';
+import { UserAddressModel } from './model/user-address.model';
+import { UserLoginInfoEntity } from 'src/domain';
 
 @Injectable()
 export class SQLDataService implements IDataServices, OnApplicationBootstrap {
   users: IGenericRepository<UserLoginInfoModel>;
   profileUser: IGenericRepository<ProfileUserModel>;
   profile: IGenericRepository<ProfileModel>;
+  userAddress: SQLGenericRepository<UserAddressModel>;
 
   constructor(
     @InjectRepository(UserLoginInfoModel)
-    private usersRepository: Repository<UserLoginInfoModel>,
+    private usersRepository: Repository<UserLoginInfoEntity>,
     @InjectRepository(ProfileUserModel)
     private profileUserRepository: Repository<ProfileUserEntity>,
     @InjectRepository(ProfileModel)
     private profileRepository: Repository<ProfileEntity>,
+    @InjectRepository(UserAddressModel)
+    private userAddressRepository: Repository<UserAddressEntity>,
   ) {}
 
   onApplicationBootstrap() {
@@ -42,6 +48,9 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
     );
     this.profile = new SQLGenericRepository<ProfileModel>(
       this.profileRepository,
+    );
+    this.userAddress = new SQLGenericRepository<UserAddressModel>(
+      this.userAddressRepository,
     );
   }
 }

@@ -22,10 +22,10 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('Auth MS')
-    .setDescription('This is auth ms API description')
+    .setTitle('E-Com MS')
+    .setDescription('This is e-commerce ms API description')
     .setVersion('1.0')
-    .addTag('auth')
+    .addTag('e-com')
     .setExternalDoc('Postman Collection', '../api-json')
     .build();
   const document = SwaggerModule.createDocument(app, config);

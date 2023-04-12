@@ -7,6 +7,7 @@ import { MongoGenericRepository } from './mongo-generic-repository';
 import { UserLoginInfoEntity } from 'src/domain';
 import { ProfileUserEntity } from 'src/domain/entities/profile-user/profile-user.entity';
 import { ProfileEntity } from 'src/domain/entities/profile/profile.entity';
+import { UserAddressEntity } from 'src/domain/entities/user-address/user-address.entity';
 
 export class MongoDataServices
   implements IDataServices, OnApplicationBootstrap
@@ -14,6 +15,7 @@ export class MongoDataServices
   users: IGenericRepository<UserLoginInfoEntity>;
   profileUser: IGenericRepository<ProfileUserEntity>;
   profile: IGenericRepository<ProfileEntity>;
+  userAddress: IGenericRepository<UserAddressEntity>;
 
   constructor(
     @InjectModel(UserLoginInfoEntity.name)

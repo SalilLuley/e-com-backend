@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserLoginInfoModel } from './model/user.model';
 import { ProfileUserModel } from './model/profile-user.model';
 import { ProfileModel } from './model/profile.model';
+import { UserAddressModel } from './model/user-address.model';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ProfileModel } from './model/profile.model';
       UserLoginInfoModel,
       ProfileUserModel,
       ProfileModel,
+      UserAddressModel,
     ]),
   ],
   providers: [

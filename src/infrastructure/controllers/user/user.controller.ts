@@ -26,7 +26,7 @@ export class UserController {
   @Get()
   @ApiBearerAuth()
   @Roles(ROLES.ADMIN)
-  async getAll(@Request() req: Request) {
+  async getAll() {
     try {
       return await this.userUsecase.getAllUsers();
     } catch (error) {
@@ -36,7 +36,7 @@ export class UserController {
 
   @Post()
   @Roles(ROLES.ADMIN)
-  @UseInterceptors(RefreshTokenUpdateInterceptor, ProfileUpdateInterceptor)
+  @UseInterceptors(RefreshTokenUpdateInterceptor)
   async saveUser(@Body() userLoginInfoReqDTO: UserLoginInfoReqDTO) {
     try {
       return await this.userUsecase.create(userLoginInfoReqDTO);
