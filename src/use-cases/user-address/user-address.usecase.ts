@@ -3,6 +3,7 @@ import { IDataServices } from 'src/domain/abstracts';
 import { IResponse } from 'src/domain/common/response.interface';
 import { UserAddressReqDto } from 'src/domain/dto/user-address/user-address-req.dto';
 import { UserAddressResDto } from 'src/domain/dto/user-address/user-address-res.dto';
+import { UserAddressUpdateReqDto } from 'src/domain/dto/user-address/user-address-update-req.dto';
 import { UserAddressEntity } from 'src/domain/entities/user-address/user-address.entity';
 import { MESSAGES } from 'src/infrastructure/common';
 import { UserAddressConvertor } from 'src/infrastructure/convertors/user-address/user-address.convertor';
@@ -51,6 +52,27 @@ export class UserAddressUsecase {
       return {
         data,
         message: MESSAGES.USER_ADDRESS.GET.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async update(
+    userAddressUpdateReqDto: UserAddressUpdateReqDto,
+  ): Promise<IResponse<UserAddressResDto>> {
+    try {
+      const { id } = userAddressUpdateReqDto;
+      const userAddressEntity: UserAddressEntity =
+        this.userConvertor.toUpdateUserAddressModelFromDto(
+          userAddressUpdateReqDto,
+        );
+      const entity: UserAddressEntity =
+        await this.databaseService.userAddress.update(id, userAddressEntity);
+
+      return {
+        data: null,
+        message: MESSAGES.USER_ADDRESS.UPDATE.SUCCESS,
       };
     } catch (error) {
       throw error;

@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Patch,
   Post,
   Request,
   UseGuards,
@@ -12,6 +13,7 @@ import { RequestWithUser } from 'src/domain/common/request.interface';
 import { IResponse } from 'src/domain/common/response.interface';
 import { UserAddressReqDto } from 'src/domain/dto/user-address/user-address-req.dto';
 import { UserAddressResDto } from 'src/domain/dto/user-address/user-address-res.dto';
+import { UserAddressUpdateReqDto } from 'src/domain/dto/user-address/user-address-update-req.dto';
 import { AccessTokenGuard } from 'src/infrastructure/guards/auth/accessToken.guard';
 import { UserAddressUsecase } from 'src/use-cases/user-address/user-address.usecase';
 
@@ -21,7 +23,7 @@ import { UserAddressUsecase } from 'src/use-cases/user-address/user-address.usec
 export class UserAddressController {
   constructor(private userAddressUsecase: UserAddressUsecase) {}
 
-  @Get()
+  @Get('get')
   @ApiBearerAuth()
   async getAddressByUserId(
     @Request() request: RequestWithUser,
@@ -34,7 +36,7 @@ export class UserAddressController {
     }
   }
 
-  @Post()
+  @Post('create')
   @ApiBearerAuth()
   async create(
     @Request() request: RequestWithUser,
@@ -46,6 +48,20 @@ export class UserAddressController {
         userLoginInfoId,
         userAddressReqDto,
       );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  @Patch('update')
+  @ApiBearerAuth()
+  async update(
+    @Request() request: RequestWithUser,
+    @Body() userAddressUpdateReqDto: UserAddressUpdateReqDto,
+  ): Promise<IResponse<UserAddressResDto>> {
+    try {
+      const { userLoginInfoId }: UserLoginInfoEntity = request.user;
+      return await this.userAddressUsecase.update(userAddressUpdateReqDto);
     } catch (error) {
       throw error;
     }

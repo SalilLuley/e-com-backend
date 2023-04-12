@@ -27,5 +27,8 @@ export const MESSAGES = {
     GET: {
       SUCCESS: 'SUCCESSFULLY FETCHED ADDRESS',
     },
+    UPDATE: {
+      SUCCESS: 'SUCCESSFULLY UPDATED ADDRESS',
+    },
   },
 };
