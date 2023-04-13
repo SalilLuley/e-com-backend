@@ -1,6 +1,7 @@
 import { IGenericRepository } from '.';
 import { UserLoginInfoEntity } from '../entities';
 import { ProductCategoryEntity } from '../entities/product-category/product-category.entity';
+import { ProductInventoryEntity } from '../entities/product-inventory/product-inventory.entity';
 import { ProductEntity } from '../entities/product/product.entity';
 import { ProfileUserEntity } from '../entities/profile-user/profile-user.entity';
 import { ProfileEntity } from '../entities/profile/profile.entity';
@@ -13,4 +14,5 @@ export abstract class IDataServices {
   abstract userAddress: IGenericRepository<UserAddressEntity>;
   abstract product: IGenericRepository<ProductEntity>;
   abstract productCategory: IGenericRepository<ProductCategoryEntity>;
+  abstract productInventory: IGenericRepository<ProductInventoryEntity>;
 }

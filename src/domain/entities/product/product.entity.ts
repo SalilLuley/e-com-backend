@@ -1,4 +1,6 @@
-export class ProductEntity {
+import { BaseEntity } from '../base/base-entity';
+
+export class ProductEntity extends BaseEntity {
   readonly id?: number;
   readonly name: string;
   readonly desc: string;
@@ -7,7 +9,4 @@ export class ProductEntity {
   readonly inventoryId: number;
   readonly discountId: number;
   readonly price: number;
-  readonly createdAt?: Date;
-  readonly updatedAt?: Date;
-  readonly deletedAt?: Date;
 }

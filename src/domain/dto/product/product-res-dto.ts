@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsDate, IsNumber, IsString } from 'class-validator';
+import { BaseDto } from '../base-dto/base.dto';
 
-export class ProductResDto {
+export class ProductResDto extends BaseDto {
   @ApiProperty({ required: false })
   @IsNumber()
   readonly id?: number;
@@ -33,16 +34,4 @@ export class ProductResDto {
   @ApiProperty({ required: true })
   @IsNumber()
   readonly price: number;
-
-  @ApiProperty({ required: true })
-  @IsDate()
-  readonly createdAt?: Date;
-
-  @ApiProperty({ required: true })
-  @IsDate()
-  readonly updatedAt?: Date;
-
-  @ApiProperty({ required: true })
-  @IsDate()
-  readonly deletedAt?: Date;
 }

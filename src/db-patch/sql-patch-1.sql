@@ -21,3 +21,11 @@ CREATE TABLE `parko`.`product_category` (
   `updated_at` TIMESTAMP NULL,
   `deleted_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`));
+
+CREATE TABLE `parko`.`product_inventory` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `quantity` INT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL,
+  `deleted_at` TIMESTAMP NULL,
+  PRIMARY KEY (`id`));

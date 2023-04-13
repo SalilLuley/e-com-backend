@@ -26,10 +26,10 @@ import { ProductCategoryResDto } from 'src/domain/dto/product-category/product-c
 export class ProductCategoryController {
   constructor(private usecase: ProductCategoryUsecase) {}
 
-  @Get('get')
+  @Get('get-all')
   @ApiBearerAuth()
   @Roles(ROLES.ADMIN)
-  async get(): Promise<IResponse<ProductCategoryResDto[]>> {
+  async getAll(): Promise<IResponse<ProductCategoryResDto[]>> {
     try {
       return await this.usecase.getAll();
     } catch (error) {

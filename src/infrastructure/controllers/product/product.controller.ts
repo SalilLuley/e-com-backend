@@ -28,7 +28,7 @@ import { ProductUsecase } from 'src/use-cases/product/product.usecase';
 export class ProductController {
   constructor(private productUsecase: ProductUsecase) {}
 
-  @Get('get')
+  @Get('get-all')
   @ApiBearerAuth()
   @Roles(ROLES.ADMIN, ROLES.USER)
   async getProductById(): Promise<IResponse<ProductResDto[]>> {

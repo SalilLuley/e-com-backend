@@ -10,6 +10,7 @@ import { ProfileEntity } from 'src/domain/entities/profile/profile.entity';
 import { UserAddressEntity } from 'src/domain/entities/user-address/user-address.entity';
 import { ProductEntity } from 'src/domain/entities/product/product.entity';
 import { ProductCategoryEntity } from 'src/domain/entities/product-category/product-category.entity';
+import { ProductInventoryEntity } from 'src/domain/entities/product-inventory/product-inventory.entity';
 
 export class MongoDataServices
   implements IDataServices, OnApplicationBootstrap
@@ -20,6 +21,7 @@ export class MongoDataServices
   userAddress: IGenericRepository<UserAddressEntity>;
   product: IGenericRepository<ProductEntity>;
   productCategory: IGenericRepository<ProductCategoryEntity>;
+  productInventory: IGenericRepository<ProductInventoryEntity>;
 
   constructor(
     @InjectModel(UserLoginInfoEntity.name)

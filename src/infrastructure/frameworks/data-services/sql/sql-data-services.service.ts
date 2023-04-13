@@ -15,6 +15,8 @@ import { ProductEntity } from 'src/domain/entities/product/product.entity';
 import { ProductModel } from './model/product.model';
 import { ProductCategoryModel } from './model/product-category.model';
 import { ProductCategoryEntity } from 'src/domain/entities/product-category/product-category.entity';
+import { ProductInventoryEntity } from 'src/domain/entities/product-inventory/product-inventory.entity';
+import { ProductInventoryModel } from './model/product-inventory.model';
 
 @Injectable()
 export class SQLDataService implements IDataServices, OnApplicationBootstrap {
@@ -24,6 +26,7 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
   userAddress: IGenericRepository<UserAddressModel>;
   product: IGenericRepository<ProductEntity>;
   productCategory: IGenericRepository<ProductCategoryEntity>;
+  productInventory: IGenericRepository<ProductInventoryEntity>;
 
   constructor(
     @InjectRepository(UserLoginInfoModel)
@@ -38,20 +41,13 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
     private productRepository: Repository<ProductEntity>,
     @InjectRepository(ProductCategoryModel)
     private productCategoryRepository: Repository<ProductCategoryEntity>,
+    @InjectRepository(ProductInventoryModel)
+    private productInventoryRepository: Repository<ProductInventoryEntity>,
   ) {}
 
   onApplicationBootstrap() {
     this.users = new SQLGenericRepository<UserLoginInfoModel>(
       this.usersRepository,
-      [
-        'username',
-        'firstname',
-        'lastname',
-        'password',
-        'userLoginInfoId',
-        'refreshToken',
-        'role',
-      ],
     );
     this.profileUser = new SQLGenericRepository<ProfileUserModel>(
       this.profileUserRepository,
@@ -67,6 +63,9 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
     );
     this.productCategory = new SQLGenericRepository<ProductCategoryModel>(
       this.productCategoryRepository,
+    );
+    this.productInventory = new SQLGenericRepository<ProductInventoryModel>(
+      this.productInventoryRepository,
     );
   }
 }

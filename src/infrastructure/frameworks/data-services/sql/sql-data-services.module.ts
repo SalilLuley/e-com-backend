@@ -8,6 +8,7 @@ import { ProfileModel } from './model/profile.model';
 import { UserAddressModel } from './model/user-address.model';
 import { ProductModel } from './model/product.model';
 import { ProductCategoryModel } from './model/product-category.model';
+import { ProductInventoryModel } from './model/product-inventory.model';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ProductCategoryModel } from './model/product-category.model';
       UserAddressModel,
       ProductModel,
       ProductCategoryModel,
+      ProductInventoryModel,
     ]),
   ],
   providers: [
