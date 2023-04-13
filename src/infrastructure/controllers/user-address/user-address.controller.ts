@@ -29,7 +29,7 @@ import { UserAddressUsecase } from 'src/use-cases/user-address/user-address.usec
 export class UserAddressController {
   constructor(private userAddressUsecase: UserAddressUsecase) {}
 
-  @Get('get')
+  @Get('get-all')
   @ApiBearerAuth()
   @Roles(ROLES.USER)
   async getAddressByUserId(
@@ -82,6 +82,19 @@ export class UserAddressController {
   ): Promise<IResponse<UserAddressResDto>> {
     try {
       return await this.userAddressUsecase.delete(id);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  @Get('get-one/:id')
+  @ApiBearerAuth()
+  @Roles(ROLES.USER)
+  async getOneAddress(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<IResponse<UserAddressResDto>> {
+    try {
+      return await this.userAddressUsecase.getOneAddress(id);
     } catch (error) {
       throw error;
     }

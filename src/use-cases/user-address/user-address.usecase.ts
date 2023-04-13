@@ -90,4 +90,16 @@ export class UserAddressUsecase {
       throw error;
     }
   }
+
+  async getOneAddress(id: number): Promise<IResponse<UserAddressResDto>> {
+    try {
+      const data = await this.databaseService.userAddress.get(id);
+      return {
+        data,
+        message: MESSAGES.USER_ADDRESS.GET.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
 }

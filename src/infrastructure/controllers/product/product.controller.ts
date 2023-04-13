@@ -77,4 +77,17 @@ export class ProductController {
       throw error;
     }
   }
+
+  @Get('get-one/:id')
+  @ApiBearerAuth()
+  @Roles(ROLES.USER)
+  async getOneAddress(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<IResponse<ProductResDto>> {
+    try {
+      return await this.productUsecase.getOneAddress(id);
+    } catch (error) {
+      throw error;
+    }
+  }
 }

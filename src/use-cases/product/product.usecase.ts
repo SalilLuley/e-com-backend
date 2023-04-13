@@ -84,4 +84,16 @@ export class ProductUsecase {
       throw error;
     }
   }
+
+  async getOneAddress(id: number): Promise<IResponse<ProductResDto>> {
+    try {
+      const data = await this.databaseService.product.get(id);
+      return {
+        data,
+        message: MESSAGES.USER_ADDRESS.GET.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
 }

@@ -23,7 +23,7 @@ import { UserUsecase } from 'src/use-cases/user/user.usecase';
 export class UserController {
   constructor(private userUsecase: UserUsecase) {}
 
-  @Get()
+  @Get('get-all')
   @ApiBearerAuth()
   @Roles(ROLES.ADMIN)
   async getAll() {
@@ -34,7 +34,7 @@ export class UserController {
     }
   }
 
-  @Post()
+  @Post('create')
   @Roles(ROLES.ADMIN)
   @UseInterceptors(RefreshTokenUpdateInterceptor)
   async saveUser(@Body() userLoginInfoReqDTO: UserLoginInfoReqDTO) {
