@@ -12,6 +12,7 @@ import { ProductEntity } from 'src/domain/entities/product/product.entity';
 import { ProductCategoryEntity } from 'src/domain/entities/product-category/product-category.entity';
 import { ProductInventoryEntity } from 'src/domain/entities/product-inventory/product-inventory.entity';
 import { DiscountEntity } from 'src/domain/entities/discount/discount.entity';
+import { OrderItemsEntity } from 'src/domain/entities/order-items/order-items.entity';
 
 export class MongoDataServices
   implements IDataServices, OnApplicationBootstrap
@@ -28,6 +29,7 @@ export class MongoDataServices
     @InjectModel(UserLoginInfoEntity.name)
     private userLoginInfoModel: Model<UserLoginInfoModel>,
   ) {}
+  orderItems: IGenericRepository<OrderItemsEntity>;
   discount: IGenericRepository<DiscountEntity>;
 
   onApplicationBootstrap() {

@@ -102,4 +102,18 @@ export const MESSAGES = {
       SUCCESS: 'DELETED DISCOUNT',
     },
   },
+  ORDER_ITEMS: {
+    CREATE: {
+      SUCCESS: 'SUCCESSFULLY ADDED ORDER ITEMS',
+    },
+    GET: {
+      SUCCESS: 'SUCCESSFULLY FETCHED ORDER ITEMS',
+    },
+    UPDATE: {
+      SUCCESS: 'SUCCESSFULLY UPDATED ORDER ITEMS',
+    },
+    DELETE: {
+      SUCCESS: 'DELETED ORDER ITEMS',
+    },
+  },
 };

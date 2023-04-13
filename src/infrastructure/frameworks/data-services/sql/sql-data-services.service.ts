@@ -19,6 +19,8 @@ import { ProductInventoryEntity } from 'src/domain/entities/product-inventory/pr
 import { ProductInventoryModel } from './model/product-inventory.model';
 import { DiscountEntity } from 'src/domain/entities/discount/discount.entity';
 import { DiscountModel } from './model/discount.model';
+import { OrderItemsEntity } from 'src/domain/entities/order-items/order-items.entity';
+import { OrderItemsModel } from './model/order-items.model';
 
 @Injectable()
 export class SQLDataService implements IDataServices, OnApplicationBootstrap {
@@ -30,6 +32,7 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
   productCategory: IGenericRepository<ProductCategoryEntity>;
   productInventory: IGenericRepository<ProductInventoryEntity>;
   discount: IGenericRepository<DiscountEntity>;
+  orderItems: IGenericRepository<OrderItemsEntity>;
 
   constructor(
     @InjectRepository(UserLoginInfoModel)
@@ -48,6 +51,8 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
     private productInventoryRepository: Repository<ProductInventoryEntity>,
     @InjectRepository(DiscountModel)
     private discountRepository: Repository<DiscountEntity>,
+    @InjectRepository(OrderItemsModel)
+    private orderItemsRepository: Repository<OrderItemsEntity>,
   ) {}
 
   onApplicationBootstrap() {
@@ -74,6 +79,9 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
     );
     this.discount = new SQLGenericRepository<DiscountModel>(
       this.discountRepository,
+    );
+    this.orderItems = new SQLGenericRepository<OrderItemsModel>(
+      this.orderItemsRepository,
     );
   }
 }

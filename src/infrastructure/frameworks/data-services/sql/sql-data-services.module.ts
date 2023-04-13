@@ -10,6 +10,7 @@ import { ProductModel } from './model/product.model';
 import { ProductCategoryModel } from './model/product-category.model';
 import { ProductInventoryModel } from './model/product-inventory.model';
 import { DiscountModel } from './model/discount.model';
+import { OrderItemsModel } from './model/order-items.model';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { DiscountModel } from './model/discount.model';
       ProductCategoryModel,
       ProductInventoryModel,
       DiscountModel,
+      OrderItemsModel,
     ]),
   ],
   providers: [

@@ -17,6 +17,8 @@ import { CustomJwtModule } from '../frameworks/jwt/jwt.module';
 import { DataServicesModule } from '../services/data-services/data-service.module';
 import { DiscountController } from './discount/discount.controller';
 import { DiscountUsecaseModule } from 'src/use-cases/discount/discount.module';
+import { OrderItemsController } from './order-items/order-items.controller';
+import { OrderItemsUsecaseModule } from 'src/use-cases/order-items/order-items.module';
 
 @Module({
   imports: [
@@ -30,6 +32,7 @@ import { DiscountUsecaseModule } from 'src/use-cases/discount/discount.module';
     UserAddressUsecaseModule,
     ProductUsecaseModule,
     DiscountUsecaseModule,
+    OrderItemsUsecaseModule,
   ],
   controllers: [
     UserController,
@@ -39,6 +42,7 @@ import { DiscountUsecaseModule } from 'src/use-cases/discount/discount.module';
     ProductCategoryController,
     ProductInventoryController,
     DiscountController,
+    OrderItemsController,
   ],
 })
 export class ControllersModule {}

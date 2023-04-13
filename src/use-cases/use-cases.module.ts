@@ -3,11 +3,8 @@ import { ProductCategoryUsecase } from './product-category/product-category.usec
 import { ConvertorsModule } from 'src/infrastructure/convertors/convertors.module';
 import { DataServicesModule } from 'src/infrastructure/services/data-services/data-service.module';
 import { ProductInventoryUsecase } from './product-inventory/product-inventory.usecase';
-import { LoginUsecaseModule } from './auth/auth.module';
-import { ProductUsecaseModule } from './product/product.module';
-import { UserAddressUsecaseModule } from './user-address/user-address.module';
-import { UserUsecaseModule } from './user/user.module';
 import { DiscountUsecaseModule } from './discount/discount.module';
+import { OrderItemsUsecaseModule } from './order-items/order-items.module';
 
 @Module({
   imports: [DataServicesModule, ConvertorsModule],
@@ -15,11 +12,13 @@ import { DiscountUsecaseModule } from './discount/discount.module';
     ProductCategoryUsecase,
     ProductInventoryUsecase,
     DiscountUsecaseModule,
+    OrderItemsUsecaseModule,
   ],
   exports: [
     ProductCategoryUsecase,
     ProductInventoryUsecase,
     DiscountUsecaseModule,
+    OrderItemsUsecaseModule,
   ],
 })
 export class UseCasesModule {}

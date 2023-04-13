@@ -1,4 +1,4 @@
-CREATE TABLE `parko`.`product` (
+CREATE TABLE `product` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NULL,
     `desc` TEXT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE `parko`.`product` (
     PRIMARY KEY (`id`));
 
 
-CREATE TABLE `parko`.`product_category` (
+CREATE TABLE `product_category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   `desc` TEXT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE `parko`.`product_category` (
   `deleted_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `parko`.`product_inventory` (
+CREATE TABLE `product_inventory` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `quantity` INT NULL,
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
@@ -30,7 +30,7 @@ CREATE TABLE `parko`.`product_inventory` (
   `deleted_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `parko`.`discount` (
+CREATE TABLE `discount` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   `desc` TEXT NULL,
@@ -39,4 +39,13 @@ CREATE TABLE `parko`.`discount` (
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL,
   `deleted_at` TIMESTAMP NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `order_items` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `order_id` INT NULL,
+  `product_id` INT NULL,
+  `quantity` INT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`));

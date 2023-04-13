@@ -8,6 +8,7 @@ import { ProductConvertor } from './product/product.convertor';
 import { ProductCategoryConvertor } from './product-category/product-category.convertor';
 import { ProductInventoryConvertor } from './product-inventory/product-inventory.convertor';
 import { DiscountConvertor } from './discount/discount.convertor';
+import { OrderItemsConvertor } from './order-items/order-items.convertor';
 
 @Module({
   providers: [
@@ -20,6 +21,7 @@ import { DiscountConvertor } from './discount/discount.convertor';
     ProductCategoryConvertor,
     ProductInventoryConvertor,
     DiscountConvertor,
+    OrderItemsConvertor,
   ],
   exports: [
     UserDtoConvertor,
@@ -31,6 +33,7 @@ import { DiscountConvertor } from './discount/discount.convertor';
     ProductCategoryConvertor,
     ProductInventoryConvertor,
     DiscountConvertor,
+    OrderItemsConvertor,
   ],
 })
 export class ConvertorsModule {}
