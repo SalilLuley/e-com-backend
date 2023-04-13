@@ -3,6 +3,7 @@ import { UserLoginInfoReqDTO, UserLoginInfoResDTO } from 'src/domain/dto';
 import { RefreshTokenResDto } from 'src/domain/dto/auth/refresh-token-dto.class';
 import { UserLoginInfoEntity } from 'src/domain/entities';
 import { format, parseISO } from 'date-fns';
+import { UpdateProfileUserLoginInfoReqDTO } from 'src/domain/dto/user/user-req-update-profile.dto';
 
 @Injectable()
 export class UserDtoConvertor {
@@ -67,5 +68,11 @@ export class UserDtoConvertor {
     refreshToken: string,
   ): RefreshTokenResDto {
     return { refreshToken, token };
+  }
+
+  toUpdateUserEntityFromDto(
+    updateProfileUserLoginInfoReqDTO: UpdateProfileUserLoginInfoReqDTO,
+  ): UserLoginInfoEntity {
+    return { ...updateProfileUserLoginInfoReqDTO };
   }
 }

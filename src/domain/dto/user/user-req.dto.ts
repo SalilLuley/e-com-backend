@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEnum, IsIn, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsString } from 'class-validator';
 import { ROLES } from 'src/infrastructure/common/enum/roles.enum';
 
 export class UserLoginInfoReqDTO {

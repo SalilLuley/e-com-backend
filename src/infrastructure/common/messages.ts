@@ -6,6 +6,12 @@ export const MESSAGES = {
     CREATE: {
       SUCCESS: 'SUCCESSFULLY CREATED USER',
     },
+    UPDATE: {
+      SUCCESS: 'SUCCESSFULLY UPDATED USER',
+    },
+    DELETE: {
+      SUCCESS: 'SUCCESSFULLY DELETED USER',
+    },
     USER_NOT_FOUND: 'USER NOT FOUND',
   },
   LOGIN: {

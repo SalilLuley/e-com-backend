@@ -12,6 +12,7 @@ import { MESSAGES } from 'src/infrastructure/common';
 
 import { BcryptService } from 'src/infrastructure/frameworks/bcrypt/bcrypt.service';
 import { JWTDataService } from 'src/infrastructure/frameworks/jwt/jwt.dataservice';
+import { UpdateProfileUserLoginInfoReqDTO } from 'src/domain/dto/user/user-req-update-profile.dto';
 @Injectable()
 export class UserUsecase {
   constructor(
@@ -74,5 +75,38 @@ export class UserUsecase {
       data,
       message: MESSAGES.USER.GET.SUCCESS,
     };
+  }
+
+  async update(
+    userId: number,
+    updateProfileUserLoginInfoReqDTO: UpdateProfileUserLoginInfoReqDTO,
+  ): Promise<IResponse<null>> {
+    try {
+      const userLoginInfoEntity: UserLoginInfoEntity =
+        this.userDtoConvertor.toUpdateUserEntityFromDto(
+          updateProfileUserLoginInfoReqDTO,
+        );
+
+      await this.databaseService.users.update(userId, userLoginInfoEntity);
+
+      return {
+        data: null,
+        message: MESSAGES.USER.UPDATE.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async delete(userId: number): Promise<IResponse<UserLoginInfoResDTO>> {
+    try {
+      await this.databaseService.users.delete(userId);
+      return {
+        data: null,
+        message: MESSAGES.USER.DELETE.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
   }
 }
