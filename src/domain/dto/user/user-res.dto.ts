@@ -25,4 +25,8 @@ export class UserLoginInfoResDTO {
   @ApiProperty({ required: false })
   @IsString()
   readonly refreshToken?: string;
+
+  @ApiProperty({ required: false })
+  @IsString()
+  readonly role?: string;
 }

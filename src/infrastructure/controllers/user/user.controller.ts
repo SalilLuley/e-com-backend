@@ -15,6 +15,7 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { UserLoginInfoReqDTO } from 'src/domain';
 import { RequestWithUser } from 'src/domain/common/request.interface';
 import { UpdateProfileUserLoginInfoReqDTO } from 'src/domain/dto/user/user-req-update-profile.dto';
+import { UpdatePasswordUserLoginInfoReqDTO } from 'src/domain/dto/user/user-req-update-profile.dto copy';
 import { Roles } from 'src/infrastructure/common/decorators/roles.decorator';
 import { ROLES } from 'src/infrastructure/common/enum/roles.enum';
 import { AccessTokenGuard } from 'src/infrastructure/guards/auth/accessToken.guard';
@@ -39,13 +40,24 @@ export class UserController {
     }
   }
 
+  @Get('get-one/:id')
+  @ApiBearerAuth()
+  @Roles(ROLES.ADMIN)
+  async getOne(@Param('id', ParseIntPipe) userId: number) {
+    try {
+      return await this.userUsecase.getOneUser(userId);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   @Post('create')
   @ApiBearerAuth()
   @Roles(ROLES.ADMIN)
   @UseInterceptors(RefreshTokenUpdateInterceptor)
-  async saveUser(@Body() userLoginInfoReqDTO: UserLoginInfoReqDTO) {
+  async saveUser(@Body() dto: UserLoginInfoReqDTO) {
     try {
-      return await this.userUsecase.create(userLoginInfoReqDTO);
+      return await this.userUsecase.create(dto);
     } catch (error) {
       throw error;
     }
@@ -56,16 +68,13 @@ export class UserController {
   @Roles(ROLES.USER, ROLES.ADMIN)
   async update(
     @Request() request: RequestWithUser,
-    @Body() updateProfileUserLoginInfoReqDTO: UpdateProfileUserLoginInfoReqDTO,
+    @Body() dto: UpdateProfileUserLoginInfoReqDTO,
   ) {
     try {
       const {
         user: { userLoginInfoId },
       } = request;
-      return await this.userUsecase.update(
-        userLoginInfoId,
-        updateProfileUserLoginInfoReqDTO,
-      );
+      return await this.userUsecase.update(userLoginInfoId, dto);
     } catch (error) {
       throw error;
     }
@@ -77,6 +86,37 @@ export class UserController {
   async delete(@Param('id', ParseIntPipe) userId: number) {
     try {
       return await this.userUsecase.delete(userId);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  @Get('get-my-profile')
+  @ApiBearerAuth()
+  @Roles(ROLES.USER, ROLES.ADMIN)
+  async getMyProfile(@Request() request: RequestWithUser) {
+    try {
+      const {
+        user: { userLoginInfoId },
+      } = request;
+      return await this.userUsecase.getMyProfile(userLoginInfoId);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  @Patch('update-password')
+  @ApiBearerAuth()
+  @Roles(ROLES.USER, ROLES.ADMIN)
+  async updatePassword(
+    @Request() request: RequestWithUser,
+    @Body() dto: UpdatePasswordUserLoginInfoReqDTO,
+  ) {
+    try {
+      const {
+        user: { userLoginInfoId },
+      } = request;
+      return await this.userUsecase.updatePassword(userLoginInfoId, dto);
     } catch (error) {
       throw error;
     }

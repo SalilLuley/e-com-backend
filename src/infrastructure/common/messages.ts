@@ -1,7 +1,10 @@
 export const MESSAGES = {
   USER: {
-    GET: {
+    GET_ALL: {
       SUCCESS: 'SUCCESSFULLY FETCHED ALL USERS',
+    },
+    GET: {
+      SUCCESS: 'SUCCESSFULLY FETCHED USER',
     },
     CREATE: {
       SUCCESS: 'SUCCESSFULLY CREATED USER',

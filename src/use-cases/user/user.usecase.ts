@@ -13,6 +13,7 @@ import { MESSAGES } from 'src/infrastructure/common';
 import { BcryptService } from 'src/infrastructure/frameworks/bcrypt/bcrypt.service';
 import { JWTDataService } from 'src/infrastructure/frameworks/jwt/jwt.dataservice';
 import { UpdateProfileUserLoginInfoReqDTO } from 'src/domain/dto/user/user-req-update-profile.dto';
+import { UpdatePasswordUserLoginInfoReqDTO } from 'src/domain/dto/user/user-req-update-profile.dto copy';
 @Injectable()
 export class UserUsecase {
   constructor(
@@ -32,7 +33,7 @@ export class UserUsecase {
         );
       return {
         data,
-        message: MESSAGES.USER.GET.SUCCESS,
+        message: MESSAGES.USER.GET_ALL.SUCCESS,
       };
     } catch (error) {
       throw error;
@@ -73,7 +74,7 @@ export class UserUsecase {
 
     return {
       data,
-      message: MESSAGES.USER.GET.SUCCESS,
+      message: MESSAGES.USER.GET_ALL.SUCCESS,
     };
   }
 
@@ -104,6 +105,68 @@ export class UserUsecase {
       return {
         data: null,
         message: MESSAGES.USER.DELETE.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getOneUser(userId: number): Promise<IResponse<UserLoginInfoResDTO>> {
+    try {
+      const userLoginInfoEntity: UserLoginInfoEntity =
+        await this.databaseService.users.get<UserLoginInfoEntity>({
+          userLoginInfoId: userId,
+        });
+      const data: UserLoginInfoResDTO =
+        this.userDtoConvertor.toUserLoginInfoResDTOFromGetMyProfile(
+          userLoginInfoEntity,
+        );
+      return {
+        data,
+        message: MESSAGES.USER.GET.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getMyProfile(userId: number): Promise<IResponse<UserLoginInfoResDTO>> {
+    try {
+      const userLoginInfoEntity: UserLoginInfoEntity =
+        await this.databaseService.users.get<UserLoginInfoEntity>({
+          userLoginInfoId: userId,
+        });
+      const data: UserLoginInfoResDTO =
+        this.userDtoConvertor.toUserLoginInfoResDTOFromGetMyProfile(
+          userLoginInfoEntity,
+        );
+      return {
+        data,
+        message: MESSAGES.USER.GET.SUCCESS,
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updatePassword(
+    userId: number,
+    dto: UpdatePasswordUserLoginInfoReqDTO,
+  ): Promise<IResponse<null>> {
+    try {
+      const { password } = dto;
+      const hashPassword: string = await this.bcryptService.hash(password);
+
+      const userLoginInfoEntity: UserLoginInfoEntity =
+        this.userDtoConvertor.toUpdateUserEntityFromUpdatePasswordDto(
+          hashPassword,
+        );
+
+      await this.databaseService.users.update(userId, userLoginInfoEntity);
+
+      return {
+        data: null,
+        message: MESSAGES.USER.UPDATE.SUCCESS,
       };
     } catch (error) {
       throw error;
