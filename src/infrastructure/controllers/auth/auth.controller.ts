@@ -2,7 +2,6 @@ import {
   Body,
   Controller,
   Get,
-  InternalServerErrorException,
   Post,
   Request,
   UseGuards,
@@ -21,7 +20,6 @@ import { AuthLoginResDto } from '../../../domain/dto/auth/auth-res-dto.class';
 import { RefreshTokenUpdateInterceptor } from 'src/infrastructure/interceptors/refresh-token-update.interceptor';
 import { MESSAGES } from 'src/infrastructure/common';
 import { RequestWithUser } from 'src/domain/common/request.interface';
-import { ApiResponseOk } from 'src/infrastructure/swagger/response.decorator';
 
 @Controller('auth')
 @ApiTags('Auth')

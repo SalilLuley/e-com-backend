@@ -4,7 +4,6 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 
 import {
   AuthLoginReqDto,
@@ -15,7 +14,6 @@ import { IDataServices } from 'src/domain/abstracts';
 import { IResponse } from 'src/domain/common/response.interface';
 import { MESSAGES } from 'src/infrastructure/common/messages';
 import { AuthDtoConvertor } from 'src/infrastructure/convertors/auth/auth-dto.convertor';
-import { UserDtoConvertor } from 'src/infrastructure/convertors/user/user-dto.convertor';
 
 import { BcryptService } from 'src/infrastructure/frameworks/bcrypt/bcrypt.service';
 import { JWTDataService } from 'src/infrastructure/frameworks/jwt/jwt.dataservice';
@@ -45,7 +43,7 @@ export class LoginUsecase {
       );
 
       if (!isEqualPassword) {
-        throw new UnauthorizedException();
+        throw new UnauthorizedException(MESSAGES.USER.PASSWORD_NOT_MATCH);
       }
 
       const token = await this.jwtDataService.generateToken(
