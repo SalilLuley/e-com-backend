@@ -5,6 +5,7 @@ import { ProfileDtoConvertor } from './profile/profile-dto.convertor';
 import { ProfileUserConvertor } from './profile-user/profile-user.convertor';
 import { UserAddressConvertor } from './user-address/user-address.convertor';
 import { ProductConvertor } from './product/product.convertor';
+import { ProductCategoryConvertor } from './product-category/product-category.convertor';
 
 @Module({
   providers: [
@@ -14,6 +15,7 @@ import { ProductConvertor } from './product/product.convertor';
     ProfileUserConvertor,
     UserAddressConvertor,
     ProductConvertor,
+    ProductCategoryConvertor,
   ],
   exports: [
     UserDtoConvertor,
@@ -22,6 +24,7 @@ import { ProductConvertor } from './product/product.convertor';
     ProfileUserConvertor,
     UserAddressConvertor,
     ProductConvertor,
+    ProductCategoryConvertor,
   ],
 })
 export class ConvertorsModule {}

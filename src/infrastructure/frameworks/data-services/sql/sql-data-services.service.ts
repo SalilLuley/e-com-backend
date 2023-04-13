@@ -13,6 +13,8 @@ import { UserAddressModel } from './model/user-address.model';
 import { UserLoginInfoEntity } from 'src/domain';
 import { ProductEntity } from 'src/domain/entities/product/product.entity';
 import { ProductModel } from './model/product.model';
+import { ProductCategoryModel } from './model/product-category.model';
+import { ProductCategoryEntity } from 'src/domain/entities/product-category/product-category.entity';
 
 @Injectable()
 export class SQLDataService implements IDataServices, OnApplicationBootstrap {
@@ -21,6 +23,7 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
   profile: IGenericRepository<ProfileModel>;
   userAddress: IGenericRepository<UserAddressModel>;
   product: IGenericRepository<ProductEntity>;
+  productCategory: IGenericRepository<ProductCategoryEntity>;
 
   constructor(
     @InjectRepository(UserLoginInfoModel)
@@ -33,6 +36,8 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
     private userAddressRepository: Repository<UserAddressEntity>,
     @InjectRepository(ProductModel)
     private productRepository: Repository<ProductEntity>,
+    @InjectRepository(ProductCategoryModel)
+    private productCategoryRepository: Repository<ProductCategoryEntity>,
   ) {}
 
   onApplicationBootstrap() {
@@ -59,6 +64,9 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
     );
     this.product = new SQLGenericRepository<ProductModel>(
       this.productRepository,
+    );
+    this.productCategory = new SQLGenericRepository<ProductCategoryModel>(
+      this.productCategoryRepository,
     );
   }
 }

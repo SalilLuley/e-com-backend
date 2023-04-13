@@ -9,6 +9,7 @@ import { ProfileUserEntity } from 'src/domain/entities/profile-user/profile-user
 import { ProfileEntity } from 'src/domain/entities/profile/profile.entity';
 import { UserAddressEntity } from 'src/domain/entities/user-address/user-address.entity';
 import { ProductEntity } from 'src/domain/entities/product/product.entity';
+import { ProductCategoryEntity } from 'src/domain/entities/product-category/product-category.entity';
 
 export class MongoDataServices
   implements IDataServices, OnApplicationBootstrap
@@ -18,6 +19,7 @@ export class MongoDataServices
   profile: IGenericRepository<ProfileEntity>;
   userAddress: IGenericRepository<UserAddressEntity>;
   product: IGenericRepository<ProductEntity>;
+  productCategory: IGenericRepository<ProductCategoryEntity>;
 
   constructor(
     @InjectModel(UserLoginInfoEntity.name)

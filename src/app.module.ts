@@ -14,6 +14,8 @@ import { UserAddressController } from './infrastructure/controllers/user-address
 import { UserAddressUsecaseModule } from './use-cases/user-address/user-address.module';
 import { ProductController } from './infrastructure/controllers/product/product.controller';
 import { ProductUsecaseModule } from './use-cases/product/product.module';
+import { UseCasesModule } from './use-cases/use-cases.module';
+import { ProductCategoryController } from './infrastructure/controllers/product-category/product-category.controller';
 
 @Module({
   imports: [
@@ -30,12 +32,14 @@ import { ProductUsecaseModule } from './use-cases/product/product.module';
     BcryptModule,
     UserAddressUsecaseModule,
     ProductUsecaseModule,
+    UseCasesModule,
   ],
   controllers: [
     UserController,
     AuthController,
     UserAddressController,
     ProductController,
+    ProductCategoryController,
   ],
   providers: [
     {
