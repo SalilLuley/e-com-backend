@@ -29,3 +29,14 @@ CREATE TABLE `parko`.`product_inventory` (
   `updated_at` TIMESTAMP NULL,
   `deleted_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`));
+
+CREATE TABLE `parko`.`discount` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NULL,
+  `desc` TEXT NULL,
+  `discount_percent` DECIMAL NULL,
+  `active` TINYINT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL,
+  `deleted_at` TIMESTAMP NULL,
+  PRIMARY KEY (`id`));

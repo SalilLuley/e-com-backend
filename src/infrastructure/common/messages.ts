@@ -88,4 +88,18 @@ export const MESSAGES = {
       SUCCESS: 'DELETED PRODUCT INVENTORY',
     },
   },
+  DISCOUNT: {
+    CREATE: {
+      SUCCESS: 'SUCCESSFULLY ADDED DISCOUNT',
+    },
+    GET: {
+      SUCCESS: 'SUCCESSFULLY FETCHED DISCOUNT',
+    },
+    UPDATE: {
+      SUCCESS: 'SUCCESSFULLY UPDATED DISCOUNT',
+    },
+    DELETE: {
+      SUCCESS: 'DELETED DISCOUNT',
+    },
+  },
 };

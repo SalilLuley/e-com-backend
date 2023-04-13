@@ -9,6 +9,7 @@ import { UserAddressModel } from './model/user-address.model';
 import { ProductModel } from './model/product.model';
 import { ProductCategoryModel } from './model/product-category.model';
 import { ProductInventoryModel } from './model/product-inventory.model';
+import { DiscountModel } from './model/discount.model';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ProductInventoryModel } from './model/product-inventory.model';
       ProductModel,
       ProductCategoryModel,
       ProductInventoryModel,
+      DiscountModel,
     ]),
   ],
   providers: [

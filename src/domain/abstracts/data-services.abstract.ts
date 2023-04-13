@@ -1,5 +1,6 @@
 import { IGenericRepository } from '.';
 import { UserLoginInfoEntity } from '../entities';
+import { DiscountEntity } from '../entities/discount/discount.entity';
 import { ProductCategoryEntity } from '../entities/product-category/product-category.entity';
 import { ProductInventoryEntity } from '../entities/product-inventory/product-inventory.entity';
 import { ProductEntity } from '../entities/product/product.entity';
@@ -15,4 +16,5 @@ export abstract class IDataServices {
   abstract product: IGenericRepository<ProductEntity>;
   abstract productCategory: IGenericRepository<ProductCategoryEntity>;
   abstract productInventory: IGenericRepository<ProductInventoryEntity>;
+  abstract discount: IGenericRepository<DiscountEntity>;
 }

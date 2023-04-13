@@ -7,10 +7,19 @@ import { LoginUsecaseModule } from './auth/auth.module';
 import { ProductUsecaseModule } from './product/product.module';
 import { UserAddressUsecaseModule } from './user-address/user-address.module';
 import { UserUsecaseModule } from './user/user.module';
+import { DiscountUsecaseModule } from './discount/discount.module';
 
 @Module({
   imports: [DataServicesModule, ConvertorsModule],
-  providers: [ProductCategoryUsecase, ProductInventoryUsecase],
-  exports: [ProductCategoryUsecase, ProductInventoryUsecase],
+  providers: [
+    ProductCategoryUsecase,
+    ProductInventoryUsecase,
+    DiscountUsecaseModule,
+  ],
+  exports: [
+    ProductCategoryUsecase,
+    ProductInventoryUsecase,
+    DiscountUsecaseModule,
+  ],
 })
 export class UseCasesModule {}

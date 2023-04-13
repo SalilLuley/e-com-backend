@@ -6,7 +6,7 @@ export class ProductModel {
   readonly id?: number;
   @Column({ type: 'varchar', name: 'name' })
   readonly name: string;
-  @Column({ type: 'varchar', name: 'desc' })
+  @Column({ type: 'text', name: 'desc' })
   readonly desc: string;
   @Column({ type: 'varchar', name: 'SKU' })
   readonly SKU: string;

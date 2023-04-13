@@ -11,6 +11,7 @@ import { UserAddressEntity } from 'src/domain/entities/user-address/user-address
 import { ProductEntity } from 'src/domain/entities/product/product.entity';
 import { ProductCategoryEntity } from 'src/domain/entities/product-category/product-category.entity';
 import { ProductInventoryEntity } from 'src/domain/entities/product-inventory/product-inventory.entity';
+import { DiscountEntity } from 'src/domain/entities/discount/discount.entity';
 
 export class MongoDataServices
   implements IDataServices, OnApplicationBootstrap
@@ -27,6 +28,7 @@ export class MongoDataServices
     @InjectModel(UserLoginInfoEntity.name)
     private userLoginInfoModel: Model<UserLoginInfoModel>,
   ) {}
+  discount: IGenericRepository<DiscountEntity>;
 
   onApplicationBootstrap() {
     this.users = new MongoGenericRepository<UserLoginInfoEntity>(

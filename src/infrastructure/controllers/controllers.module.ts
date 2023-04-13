@@ -6,7 +6,6 @@ import { ProductInventoryController } from './product-inventory/product-inventor
 import { ProductController } from './product/product.controller';
 import { UserAddressController } from './user-address/user-address.controller';
 import { UserController } from './user/user.controller';
-import { JwtModule } from '@nestjs/jwt';
 import { LoginUsecaseModule } from 'src/use-cases/auth/auth.module';
 import { ProductUsecaseModule } from 'src/use-cases/product/product.module';
 import { UseCasesModule } from 'src/use-cases/use-cases.module';
@@ -16,6 +15,8 @@ import { ConvertorsModule } from '../convertors/convertors.module';
 import { BcryptModule } from '../frameworks/bcrypt/bcrypt.module';
 import { CustomJwtModule } from '../frameworks/jwt/jwt.module';
 import { DataServicesModule } from '../services/data-services/data-service.module';
+import { DiscountController } from './discount/discount.controller';
+import { DiscountUsecaseModule } from 'src/use-cases/discount/discount.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { DataServicesModule } from '../services/data-services/data-service.modul
     LoginUsecaseModule,
     UserAddressUsecaseModule,
     ProductUsecaseModule,
+    DiscountUsecaseModule,
   ],
   controllers: [
     UserController,
@@ -36,6 +38,7 @@ import { DataServicesModule } from '../services/data-services/data-service.modul
     ProductController,
     ProductCategoryController,
     ProductInventoryController,
+    DiscountController,
   ],
 })
 export class ControllersModule {}
