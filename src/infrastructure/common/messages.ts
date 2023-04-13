@@ -34,4 +34,19 @@ export const MESSAGES = {
       SUCCESS: 'DELETED ADDRESS',
     },
   },
+
+  PRODUCT: {
+    CREATE: {
+      SUCCESS: 'SUCCESSFULLY ADDED PRODUCT',
+    },
+    GET: {
+      SUCCESS: 'SUCCESSFULLY FETCHED PRODUCT',
+    },
+    UPDATE: {
+      SUCCESS: 'SUCCESSFULLY UPDATED PRODUCT',
+    },
+    DELETE: {
+      SUCCESS: 'DELETED PRODUCT',
+    },
+  },
 };
