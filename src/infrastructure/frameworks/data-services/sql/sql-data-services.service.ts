@@ -21,6 +21,12 @@ import { DiscountEntity } from 'src/domain/entities/discount/discount.entity';
 import { DiscountModel } from './model/discount.model';
 import { OrderItemsEntity } from 'src/domain/entities/order-items/order-items.entity';
 import { OrderItemsModel } from './model/order-items.model';
+import { CartItemEntity } from 'src/domain/entities/cart-item/cart-item.entity';
+import { CartItemModel } from './model/cart-items.model';
+import { OrderDetailsEntity } from 'src/domain/entities/order-details/order-details.entity';
+import { OrderDetailsModel } from './model/order-details.model';
+import { UserPaymentEntity } from 'src/domain/entities/user-payment/user-payment.entity';
+import { UserPaymentModel } from './model/user-payment.model';
 
 @Injectable()
 export class SQLDataService implements IDataServices, OnApplicationBootstrap {
@@ -33,6 +39,9 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
   productInventory: IGenericRepository<ProductInventoryEntity>;
   discount: IGenericRepository<DiscountEntity>;
   orderItems: IGenericRepository<OrderItemsEntity>;
+  cartItem: IGenericRepository<CartItemEntity>;
+  orderDetails: IGenericRepository<OrderDetailsEntity>;
+  userPayment: IGenericRepository<UserPaymentEntity>;
 
   constructor(
     @InjectRepository(UserLoginInfoModel)
@@ -53,6 +62,12 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
     private discountRepository: Repository<DiscountEntity>,
     @InjectRepository(OrderItemsModel)
     private orderItemsRepository: Repository<OrderItemsEntity>,
+    @InjectRepository(CartItemModel)
+    private cartItemRepository: Repository<CartItemEntity>,
+    @InjectRepository(OrderDetailsModel)
+    private orderDetailsRepository: Repository<OrderDetailsEntity>,
+    @InjectRepository(UserPaymentModel)
+    private userPaymentRepository: Repository<UserPaymentEntity>,
   ) {}
 
   onApplicationBootstrap() {
@@ -82,6 +97,15 @@ export class SQLDataService implements IDataServices, OnApplicationBootstrap {
     );
     this.orderItems = new SQLGenericRepository<OrderItemsModel>(
       this.orderItemsRepository,
+    );
+    this.cartItem = new SQLGenericRepository<CartItemEntity>(
+      this.cartItemRepository,
+    );
+    this.orderDetails = new SQLGenericRepository<OrderDetailsEntity>(
+      this.orderDetailsRepository,
+    );
+    this.userPayment = new SQLGenericRepository<UserPaymentModel>(
+      this.userPaymentRepository,
     );
   }
 }

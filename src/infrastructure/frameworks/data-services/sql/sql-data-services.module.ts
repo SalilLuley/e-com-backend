@@ -11,6 +11,9 @@ import { ProductCategoryModel } from './model/product-category.model';
 import { ProductInventoryModel } from './model/product-inventory.model';
 import { DiscountModel } from './model/discount.model';
 import { OrderItemsModel } from './model/order-items.model';
+import { CartItemModel } from './model/cart-items.model';
+import { OrderDetailsModel } from './model/order-details.model';
+import { UserPaymentModel } from './model/user-payment.model';
 
 @Module({
   imports: [
@@ -33,6 +36,9 @@ import { OrderItemsModel } from './model/order-items.model';
       ProductInventoryModel,
       DiscountModel,
       OrderItemsModel,
+      CartItemModel,
+      OrderDetailsModel,
+      UserPaymentModel,
     ]),
   ],
   providers: [

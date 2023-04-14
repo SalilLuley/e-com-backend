@@ -49,3 +49,31 @@ CREATE TABLE `order_items` (
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`));
+
+CREATE TABLE `parko`.`cart_item` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `session_id` INT NULL,
+  `product_id` INT NULL,
+  `quantity` INT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `parko`.`order_details` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_login_info_id` INT NULL,
+  `total` DECIMAL NULL,
+  `payment id` INT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_at` TIMESTAMP NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `parko`.`user_payment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_login_info_id` INT NULL,
+  `payment_type` VARCHAR(255) NULL,
+  `provider` VARCHAR(255) NULL,
+  `account_no` INT NULL,
+  `expiry` DATE NULL,
+  PRIMARY KEY (`id`));

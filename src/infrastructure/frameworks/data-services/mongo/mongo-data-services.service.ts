@@ -13,6 +13,9 @@ import { ProductCategoryEntity } from 'src/domain/entities/product-category/prod
 import { ProductInventoryEntity } from 'src/domain/entities/product-inventory/product-inventory.entity';
 import { DiscountEntity } from 'src/domain/entities/discount/discount.entity';
 import { OrderItemsEntity } from 'src/domain/entities/order-items/order-items.entity';
+import { CartItemEntity } from 'src/domain/entities/cart-item/cart-item.entity';
+import { OrderDetailsEntity } from 'src/domain/entities/order-details/order-details.entity';
+import { UserPaymentEntity } from 'src/domain/entities/user-payment/user-payment.entity';
 
 export class MongoDataServices
   implements IDataServices, OnApplicationBootstrap
@@ -29,6 +32,9 @@ export class MongoDataServices
     @InjectModel(UserLoginInfoEntity.name)
     private userLoginInfoModel: Model<UserLoginInfoModel>,
   ) {}
+  userPayment: IGenericRepository<UserPaymentEntity>;
+  orderDetails: IGenericRepository<OrderDetailsEntity>;
+  cartItem: IGenericRepository<CartItemEntity>;
   orderItems: IGenericRepository<OrderItemsEntity>;
   discount: IGenericRepository<DiscountEntity>;
 

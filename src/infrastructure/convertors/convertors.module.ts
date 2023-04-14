@@ -9,6 +9,9 @@ import { ProductCategoryConvertor } from './product-category/product-category.co
 import { ProductInventoryConvertor } from './product-inventory/product-inventory.convertor';
 import { DiscountConvertor } from './discount/discount.convertor';
 import { OrderItemsConvertor } from './order-items/order-items.convertor';
+import { CartItemConvertor } from './cart-item/cart-item.convertor';
+import { OrderDetailsConvertor } from './order-details/order-details.convertor';
+import { UserPaymentConvertor } from './user-payment/user-payment.convertor';
 
 @Module({
   providers: [
@@ -22,6 +25,9 @@ import { OrderItemsConvertor } from './order-items/order-items.convertor';
     ProductInventoryConvertor,
     DiscountConvertor,
     OrderItemsConvertor,
+    CartItemConvertor,
+    OrderDetailsConvertor,
+    UserPaymentConvertor,
   ],
   exports: [
     UserDtoConvertor,
@@ -34,6 +40,9 @@ import { OrderItemsConvertor } from './order-items/order-items.convertor';
     ProductInventoryConvertor,
     DiscountConvertor,
     OrderItemsConvertor,
+    CartItemConvertor,
+    OrderDetailsConvertor,
+    UserPaymentConvertor,
   ],
 })
 export class ConvertorsModule {}

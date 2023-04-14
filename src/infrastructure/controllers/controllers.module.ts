@@ -19,6 +19,13 @@ import { DiscountController } from './discount/discount.controller';
 import { DiscountUsecaseModule } from 'src/use-cases/discount/discount.module';
 import { OrderItemsController } from './order-items/order-items.controller';
 import { OrderItemsUsecaseModule } from 'src/use-cases/order-items/order-items.module';
+import { CartItemController } from './cart-item/cart-item.controller';
+import { CartItemUsecaseModule } from 'src/use-cases/cart-item/cart-item.module';
+import { OrderDetailsUsecaseModule } from 'src/use-cases/order-details/order-details.module';
+import { OrderDetailsController } from './order-details/order-details.controller';
+import { UserPaymentController } from './user-payment/user-payment.controller';
+import { UserPaymentModel } from '../frameworks/data-services/sql/model/user-payment.model';
+import { UserPaymentUsecaseModule } from 'src/use-cases/user-payment/user-payment.module';
 
 @Module({
   imports: [
@@ -33,6 +40,9 @@ import { OrderItemsUsecaseModule } from 'src/use-cases/order-items/order-items.m
     ProductUsecaseModule,
     DiscountUsecaseModule,
     OrderItemsUsecaseModule,
+    CartItemUsecaseModule,
+    OrderDetailsUsecaseModule,
+    UserPaymentUsecaseModule,
   ],
   controllers: [
     UserController,
@@ -43,6 +53,9 @@ import { OrderItemsUsecaseModule } from 'src/use-cases/order-items/order-items.m
     ProductInventoryController,
     DiscountController,
     OrderItemsController,
+    CartItemController,
+    OrderDetailsController,
+    UserPaymentController,
   ],
 })
 export class ControllersModule {}
