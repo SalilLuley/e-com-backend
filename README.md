@@ -2,6 +2,8 @@
 
 This is an e-commerce skeleton repository made with clean code Architecture using Nest.js Framework. It used my MySql as a backend.
 
+To run the repository create a dev.env under env folder and add contents from sample.env. Replace the content with your original details.
+
 It includes the following modules
 
 1. User Auth using Passport
@@ -34,7 +36,7 @@ $ npm install
 $ npm run start
 
 # watch mode
-$ npm run start:dev
+$ npm run start:debug
 
 # production mode
 $ npm run start:prod
